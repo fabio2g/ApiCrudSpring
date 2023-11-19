@@ -1,0 +1,13 @@
+package com.dev.ApiCrudSpring;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ApiCrudSpringApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ApiCrudSpringApplication.class, args);
+	}
+
+}
