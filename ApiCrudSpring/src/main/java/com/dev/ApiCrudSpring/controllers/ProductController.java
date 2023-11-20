@@ -1,15 +1,26 @@
 package com.dev.ApiCrudSpring.controllers;
 
+import com.dev.ApiCrudSpring.dto.RequestProductDTO;
+import com.dev.ApiCrudSpring.repository.ProductRepository;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
+    @Autowired
+    private ProductRepository repository;
     @GetMapping
     public ResponseEntity getAllProducts() {
-        return ResponseEntity.ok("Ok, deu certo");
+        var allProducts = repository.findAll();
+        return ResponseEntity.ok(allProducts);
+    }
+
+    @PostMapping
+    public ResponseEntity saveProduct(@RequestBody @Valid RequestProductDTO data) {
+        System.out.println(data);
+        return ResponseEntity.ok().build();
     }
 }
